@@ -2,25 +2,17 @@
 
 前端脚手架 - 服务
 
-### Development
+### docker 部署 egg.js
+- Dockerfile
 
 ```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
+# 提前删除 node_mudules等忽略文件 再上传
+scp -r ./** root@112.74.201.142:/home/best-cli/server/
+cd /home/best-cli
+# 创建镜像
+docker build -t best-cli-server:v1.0 ./server    
+# 创建启动容器
+docker run -d -p 7002:7001 --name best-cli-server 06368db78fef(镜像id)
+# 7002 外网映射端口
+# 7001 容器内部端口
 ```
-
-### Deploy
-
-```bash
-$ npm start
-$ npm stop
-```
-
-### npm scripts
-
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
-
-[egg]: https://eggjs.org
